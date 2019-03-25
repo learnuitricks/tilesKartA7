@@ -1,0 +1,9 @@
+.card{
+    border-style:solid;
+    border-color:#08f;
+    margin-top: 98px;
+    margin-bottom: 1px;
+    }
+.p-0 {
+    padding: 13px !important;
+}

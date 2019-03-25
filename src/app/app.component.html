@@ -1,0 +1,44 @@
+  <div>
+    <!-----------------------nav -------------------------->
+      <div class="header">
+
+        <!-- dropdown starts -->
+          <div style="float:right;padding: 1% 1% 1% 1%">
+          <select>
+              <option value="op0">setting</option>
+              <option value="op1">Logout</option>
+            </select>
+          </div>
+        <!-- dropdown ends -->
+              <ul class="nav navbar-nav" style="float:right;padding: 1% 1% 1% 1%;background-color: rgb(236, 236, 236)">
+                 <li><a href="#"><span class="glyphicon glyphicon-user"></span> UI TRICKS</a></li>
+                </ul>
+      <!-- hamburger starts-->   
+
+  <input type="checkbox" class="openSidebarMenu" id="openSidebarMenu">
+  <label for="openSidebarMenu" class="sidebarIconToggle">
+    <div class="spinner diagonal part-1"></div>
+    <div class="spinner horizontal"></div>
+    <div class="spinner diagonal part-2"></div>
+  </label>
+
+  <div id="sidebarMenu">
+    <ul class="sidebarMenuInner">
+      <li><a [routerLink]="['/welcome']"><i class="fa fa-briefcase"></i>welcome</a></li>
+      <li><a [routerLink]="['/tiles']"><i class="fa fa-briefcase"></i>Tile List</a></li>
+      <li><a [routerLink]="['/login']"><i class="fa fa-briefcase"></i> Login</a></li>
+      <li><a [routerLink]="['/']"><i class="fa fa-briefcase"></i> Blogs</a></li>
+      <li><a [routerLink]="['/']"><i class="fa fa-briefcase"></i> Contacts</a></li>
+    </ul>
+  </div>
+
+   <!-- hamburger ends-->
+   </div>
+  
+   <!-------------------------------nav  -------------------------------->
+
+  <div class='container'> 
+    <router-outlet></router-outlet>
+  </div>
+ 
+</div>
