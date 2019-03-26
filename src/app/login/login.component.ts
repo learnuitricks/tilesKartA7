@@ -11,17 +11,21 @@ export class LoginComponent implements OnInit {
   userName:string = '';
   passWord:string = '';
   showErrorMessage:boolean=false;
+  users:string[] = ["john","kevin","david"];
   constructor(private _routerService:Router) { }
 
   ngOnInit() {
   }
 
-  login():void{
-    if(this.userName ==""){
-      // console.log("user name is required");
-      window.alert('user name is required');
-      this.showErrorMessage = true;
+  login(){
+    if(this.userName == null || this.userName == ""){
+      console.log("user is name is required");
     }
-else{this._routerService.navigate(['tiles']);}
+    else if(!this.users.includes(this.userName)){
+      console.log(`user ${this.userName} is not a registered user`);
+    }
+    localStorage.setItem("user",this.userName);    
+    this._routerService.navigate(['/tiles']);
   }
+
 }
