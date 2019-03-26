@@ -5,12 +5,16 @@
     <div class="form-group row" >
         <label for="Username" class="col-md-4 col-form-label text-md-right">Username</label>
         <div class="col-md-6">
-            <input type="text" class="form-control" name="userName" [(ngModel)]="userName"  required />
+            <input type="text" class="form-control" name="userName" [(ngModel)]="userName"  required  #uName="ngModel" pattern="^[1-9][0-9]{5}$"/>
         </div>
     </div>
-      <div class="alert alert-danger" *ngIf="showErrorMessage">
-            user name is required.
-          </div>
+    <div class="alert alert-danger" *ngIf="((!uName.valid) && uName.errors?.required )">
+        user name is required
+      </div>
+      <div class="alert alert-danger" *ngIf="((!uName.valid) && uName.errors?.pattern )">
+        user name does not match zip code.
+      </div>
+    
   <div class="form-group row">
         <label for="password" class="col-md-4 col-form-label text-md-right">Password</label>
         <div class="col-md-6">
@@ -23,4 +27,25 @@
 </div>
 <div class="card-footer bg-primary"></div>
 </div>
+<div>
+    username pristine status : {{uName.pristine}}
+  </div>
+  
+  <div>
+    username dirty status : {{uName.dirty}}
+  </div>
+  
+  <div>
+    username validity status : {{uName.valid}}
+  </div>
+  
+  
+  <div>
+    form  validity status : {{lgForm.valid}}
+  </div>
+  
+  <div>
+    form  submitted status : {{lgForm.submitted}}
+  </div>
+  
 </div>
