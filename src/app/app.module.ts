@@ -15,10 +15,16 @@ import { WelcomeComponent } from './welcome/welcome.component';
 import { TileDetailComponent } from './tile-detail/tile-detail.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RegisterComponent } from './register/register.component';
+import { TestingComponent } from './testing/testing.component';
+import { Testing1Component } from './testing1/testing1.component';
+import { Testing2Component } from './testing2/testing2.component';
 
 const appRoutes : Routes =  [
   {path:"login", component : LoginComponent},
   {path:"tiles", component : TilesComponent},
+  {path:"testing", component : TestingComponent},
+  {path:"testing1", component : Testing1Component},
+  {path:"testing2", component : Testing2Component},
   {path:'welcome',component:WelcomeComponent},
   {path:"tiles/:Id",component:TileDetailComponent},
   {path:"register", component : RegisterComponent},
@@ -36,7 +42,10 @@ const appRoutes : Routes =  [
     StarComponent,
     WelcomeComponent,
     TileDetailComponent,
-    RegisterComponent
+    RegisterComponent,
+    TestingComponent,
+    Testing1Component,
+    Testing2Component
   ],
 
   imports: [

@@ -20,13 +20,12 @@ body {
     height: 60px!important;
     overflow: hidden;
     z-index: 10;
-margin-top:-100px;
 }
 .main {
     margin: 0 auto;
     display: block;
     height: 100%;
-    margin-top: 60px;
+    margin-top: 50px;
 }
 .mainInner{
     display: table;
@@ -42,9 +41,10 @@ margin-top:-100px;
     letter-spacing: 1.25px;
 }
 #sidebarMenu {
-    height: 43%;
+    height:30%;
     position: fixed;
     left: 0;
+    overflow-y:scroll; 
     width: 250px;
     margin-top: 62px;
     transform: translateX(-250px);

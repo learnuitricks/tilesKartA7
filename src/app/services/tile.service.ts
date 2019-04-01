@@ -1,5 +1,4 @@
-import { Injectable } from '@angular/core';
-import { ITile } from '../itile';
+import { Injectable } from '@angular/core';import { ITile } from '../itile';
 import {HttpClient} from '@angular/common/http';
 import { Observable } from 'rxjs';
 
