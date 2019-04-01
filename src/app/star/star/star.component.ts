@@ -15,7 +15,7 @@ export class StarComponent implements OnInit {
  ngOnInit() {
  }
  ngOnChanges(){
-this.ratingWidth  = this.rating * 65/5;
+this.ratingWidth  = this.rating * 85/5;
  }
 
   constructor() { }
