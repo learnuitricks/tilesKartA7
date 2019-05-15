@@ -15,16 +15,12 @@ import { RegisterGuard } from './register/can-deactivateguard';
 
 const appRoutes : Routes =  [
   {path:"login", component : LoginComponent},
-  {path:"",pathMatch: 'prefix', redirectTo:"login"},
-  {path:'register',component:RegisterComponent,canDeactivate:[RegisterGuard]},
-  {path: '', canActivate:[AuthenticationGuard], children: [
   {path:'tiles',loadChildren: './tiles/tiles.module#TilesModule',canActivate:[AuthenticationGuard]},
-  
+  {path:'register',component:RegisterComponent,canDeactivate:[RegisterGuard]},
   {path:'welcome',component:WelcomeComponent,canActivate:[AuthenticationGuard]},
   {path:"",pathMatch: 'prefix', redirectTo:"login"},
- ] },
- {path:"**", redirectTo:"login"}
-]; 
+  {path:"**", redirectTo:"login"}
+ ]  
 
 @NgModule({
   declarations: [
