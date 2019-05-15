@@ -1,4 +1,5 @@
 export interface ITile {
+    Id:number;
     image:string
     name:string,
     model:string,

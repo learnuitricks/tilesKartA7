@@ -1,4 +1,5 @@
-import { Injectable } from '@angular/core';import { ITile } from '../itile';
+import { Injectable } from '@angular/core';
+import { ITile } from '../itile';
 import {HttpClient} from '@angular/common/http';
 import { Observable } from 'rxjs';
 
@@ -10,6 +11,7 @@ export class TileService {
   tiles:Array<ITile> =[];
     
   tileURL:string = "http://demo5911200.mockable.io/tiles";
+  static performFilter: any;
   constructor(private httpClient:HttpClient) { }
 
   getTiles(): Observable<Array<ITile>>{

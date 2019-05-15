@@ -5,7 +5,7 @@
       <form name="register" [formGroup]="registerForm">
           <div class="form-group" >
             <label for="userName">User Name</label>
-            <input type="text" class="form-control" formControlName ="userName" >
+            <input type="text"  class="form-control" formControlName ="userName" >
             <div   *ngIf="registerForm.get('userName').status =='INVALID'"  class="alert alert-danger">
               user name is required
             </div>

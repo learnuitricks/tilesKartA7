@@ -7,15 +7,16 @@
 <label for="userName">User Name</label>
 <input type="text" name="userName" id="userName" class="form-control" pattern="^[1-9][0-9]{5}$"
 [(ngModel)]="userName"  required #uName="ngModel" >
-<div  *ngIf="((!uName.valid) && uName.errors?.pattern )" class="alert alert-danger">
-user name does not match with the pattern
-</div>
 <div class="alert alert-danger"*ngIf="((!uName.valid) &&(uName.errors?.required)) " >
-user name is required
-</div>          
+    user name is required
+  </div>
+  <div class="alert alert-danger"*ngIf="((!uName.valid) &&(uName.errors?.pattern)) " >
+    user name is not valid input
+  </div>
+   
 <div class="form-group">
 <label for="password">Password</label>
-<input type="password" name="password" id="password" class="form-control" [(ngModel)]="password" #pwd="ngModel" required>
+<input type="password" name="passWord" id="passWord" class="form-control" [(ngModel)]="passWord" #pwd="ngModel" required>
 </div>
 <div [hidden]="pwd.valid"  class="alert alert-danger">
 password is required

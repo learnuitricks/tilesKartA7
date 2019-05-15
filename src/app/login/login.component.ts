@@ -12,6 +12,8 @@ export class LoginComponent implements OnInit {
   passWord:string = '';
   showErrorMessage:boolean=false;
   users:string[] = ["john","kevin","david"];
+  enabled: boolean;
+  loggedIn: any;
   constructor(private _routerService:Router) { }
 
   ngOnInit() {
