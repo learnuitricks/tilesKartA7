@@ -20,7 +20,7 @@ const appRoutes : Routes =  [
   {path:'welcome',component:WelcomeComponent,canActivate:[AuthenticationGuard]},
   {path:"",pathMatch: 'prefix', redirectTo:"login"},
   {path:"**", redirectTo:"login"}
- ]  
+ ]
 
 @NgModule({
   declarations: [
