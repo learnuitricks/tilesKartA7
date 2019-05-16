@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import{UsersModule} from './users/users.module';
+import {UsersModule} from './users/users.module';
 import {HttpClientModule} from '@angular/common/http';
 import {RouterModule,Routes} from '@angular/router';
 import { WelcomeComponent } from './welcome/welcome.component';
@@ -15,12 +15,15 @@ import { RegisterGuard } from './register/can-deactivateguard';
 
 const appRoutes : Routes =  [
   {path:"login", component : LoginComponent},
-  {path:'tiles',loadChildren: './tiles/tiles.module#TilesModule',canActivate:[AuthenticationGuard]},
+  {path:"",pathMatch:"prefix", component:LoginComponent},
   {path:'register',component:RegisterComponent,canDeactivate:[RegisterGuard]},
-  {path:'welcome',component:WelcomeComponent,canActivate:[AuthenticationGuard]},
-  {path:"",pathMatch: 'prefix', redirectTo:"login"},
-  {path:"**", redirectTo:"login"}
- ]
+  {path: "", canActivate:[AuthenticationGuard], children: [
+  {path:'tiles',loadChildren: './tiles/tiles.module#TilesModule'},
+  {path:'welcome',component:WelcomeComponent},
+ ] },
+ {path:"**", redirectTo:"login"}
+];
+
 
 @NgModule({
   declarations: [
