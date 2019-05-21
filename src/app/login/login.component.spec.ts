@@ -1,61 +1,72 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { Component, DebugElement } from "@angular/core";
-import { By } from "@angular/platform-browser";
 import { LoginComponent } from './login.component';
-import { User } from '../user';
+import { FormsModule } from '@angular/forms';
+import { RouterTestingModule } from '@angular/router/testing';
+import { Routes } from '@angular/router';
+export const routes:Routes=[
+    {path:'',redirectTo:'home',pathMatch:'full'},
+    {path:'login',component:LoginComponent}
+];
 
-describe('Component: Login', () => {
-
+fdescribe('LoginComponent', () => {
   let component: LoginComponent;
   let fixture: ComponentFixture<LoginComponent>;
-  let submitEl: DebugElement;
-  let loginEl: DebugElement;
-  let passwordEl: DebugElement;
+
+  beforeEach(async(() => {
+    TestBed.configureTestingModule({
+      declarations: [ LoginComponent],
+      imports:[FormsModule,RouterTestingModule.withRoutes(routes)]
+    })
+    .compileComponents();
+  }));
 
   beforeEach(() => {
-
-      // refine the test module by declaring the test component
-      TestBed.configureTestingModule({
-          declarations: [LoginComponent]
-      });
-
-
-      // create component and test fixture
-      fixture = TestBed.createComponent(LoginComponent);
-
-      // get test component from the fixture
-      component = fixture.componentInstance;
-
-      submitEl = fixture.debugElement.query(By.css('login'));
-      loginEl = fixture.debugElement.query(By.css('input[type=number]'));
-      passwordEl = fixture.debugElement.query(By.css('input[type=password]'));
+    fixture = TestBed.createComponent(LoginComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
   });
-  it('Setting enabled to false disabled the submit button', () => {
-    component.enabled = false;
-    fixture.detectChanges();
-    expect(submitEl.nativeElement.disabled).toBeTruthy();
-});
 
-it('Setting enabled to true enables the submit button', () => {
-    component.enabled = true;
-    fixture.detectChanges();
-    expect(submitEl.nativeElement.disabled).toBeFalsy();
-});
+  // it('should create', () => {
+  //   expect(component).toBeTruthy();
+  // });
+  // it('on initialization of component error message should be empty ',()=>{
+  //   expect(component.showErrorMessage).toEqual('');
+  // });
+  // it('On login() error message should not be empty',()=>{
+  //   component.login();
+  //   expect(component.showErrorMessage).toEqual('user name is required')
+  // });
+  // it('setting username and login should not have the error message ',()=>{
+  //   component.userName='uitricks';
+  //   component.login();
+  //   expect(component.showErrorMessage).toEqual('');
+  // });  
+  
+// it('once we set the username to the component class the dom should display the username ',()=>{
+//   component.userName='uitricks';
+//   let compNativeElement:HTMLElement=fixture.nativeElement;
+//   let userNameField:HTMLElement=compNativeElement.querySelector("input[name='userName']");
+//   userNameField.textContent.match('uitricks');
+//   }); 
 
-it('Entering email and password emits loggedIn event', () => {
-    let user:User;
-    loginEl.nativeElement.value = "123456";
-    passwordEl.nativeElement.value = "123456";
-
-    // Subscribe to the Observable and store the user in a local variable.
-    component.loggedIn.subscribe((value) => user = value);
-
-    // This sync emits the event and the subscribe callback gets executed above
-    submitEl.triggerEventHandler('click', null);
-
-    // Now we can check to make sure the emitted value is correct
-    expect(user.number).toBe("123456");
-    expect(user.password).toBe("123456");
-
+//   it('dont set user name,trigger login from the UI errorMessage should be non empty',()=>
+//   {
+// let compNativeElement:HTMLElement=fixture.nativeElement;
+// let loginButtonField:HTMLElement=compNativeElement.querySelector('#loginButton');
+// loginButtonField.click();
+// expect(component.showErrorMessage).toBe('user name is required');
+//   });
+it('set the username,trigger login from the UI errorMessage should be non empty',()=>{
+fixture.detectChanges();
+let compNativeElement:HTMLElement=fixture.nativeElement;
+let userNameField:HTMLInputElement=compNativeElement.querySelector("input[name='userName']");
+userNameField.value='UI Tricks';
+userNameField.dispatchEvent(new Event('input'));
+fixture.whenStable().then(()=>{
+fixture.detectChanges();
+let loginButtonField:HTMLElement=compNativeElement.querySelector("#loginButton");
+loginButtonField.click();
+expect(component.showErrorMessage).toBe('');
+  });
 });
 });

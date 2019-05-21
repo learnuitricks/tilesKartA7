@@ -10,10 +10,8 @@ export class LoginComponent implements OnInit {
 
   userName:string = '';
   passWord:string = '';
-  showErrorMessage:boolean=false;
+  showErrorMessage:string='';
   users:string[] = ["john","kevin","david"];
-  enabled: boolean;
-  loggedIn: any;
   constructor(private _routerService:Router) { }
 
   ngOnInit() {
@@ -22,6 +20,8 @@ export class LoginComponent implements OnInit {
   login(){
     if(this.userName == null || this.userName == ""){
       console.log("user is name is required");
+      this.showErrorMessage='user name is required';
+  
     }
     else if(!this.users.includes(this.userName)){
       console.log(`user ${this.userName} is not a registered user`);
